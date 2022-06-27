@@ -1,0 +1,66 @@
+﻿@model Lab2.ViewModel.EditViewModel
+@addTagHelper*, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Edit</h1>
+
+<h4>Pokoj</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="vmeId" />
+            <div class="form-group">
+                <label asp-for="vmeNazwa" class="control-label"></label>
+                <input asp-for="vmeNazwa" class="form-control" />
+                <span asp-validation-for="vmeNazwa" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="vmeOpis" class="control-label"></label>
+                <input asp-for="vmeOpis" class="form-control" />
+                <span asp-validation-for="vmeOpis" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="HostelId" class="control-label"></label>
+                <select asp-for="HostelId" class="form-control" asp-items="@Model.ListaHosteli"/>
+                <span asp-validation-for="HostelId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="vmeCenaZaNocleg" class="control-label"></label>
+                <input asp-for="vmeCenaZaNocleg" class="form-control" />
+                <span asp-validation-for="vmeCenaZaNocleg" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="vmeIloscLozek" class="control-label"></label>
+                <input asp-for="vmeIloscLozek" class="form-control" />
+                <span asp-validation-for="vmeIloscLozek" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="vmeRodzajPokoju" class="control-label"></label>
+                <select asp-for="vmeRodzajPokoju" class="form-control" >
+                    <option value="">Wybierz rodzaj pokoju</option>
+                    <option value="0">Pokoj Standard</option>
+                    <option value="1">Pokoj Premium</option>
+                    <option value="2">Pokoj Deluxe</option>
+                </select>
+                <span asp-validation-for="vmeRodzajPokoju" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

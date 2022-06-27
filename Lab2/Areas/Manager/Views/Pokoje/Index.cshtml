@@ -1,0 +1,67 @@
+﻿@model IEnumerable<Lab2.ViewModel.PokojViewModel>
+@addTagHelper*, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.vmNazwa)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.vmOpis)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.vmHostel)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.vmCenaZaNocleg)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.vmIloscLozek)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.vmRodzajPokoju)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.vmNazwa)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.vmOpis)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.vmHostel.Nazwa)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.vmCenaZaNocleg)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.vmIloscLozek)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.vmRodzajPokoju)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.vmId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.vmId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.vmId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
